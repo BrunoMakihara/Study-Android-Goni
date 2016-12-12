@@ -1,0 +1,32 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.appcountproject"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <receiver android:name="AddCountProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/appcountprovider"/>
+        </receiver>
+        <service android:name="CountService"></service>
+        <receiver android:name="CountReceiver">
+            <intent-filter>
+                <action android:name="aaa.bbb.action.START"/>
+                <action android:name="aaa.bbb.action.STOP"/>
+                <action android:name="aaa.bbb.action.COUNT"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="MainActivity"></activity>
+    </application>
+
+</manifest>
